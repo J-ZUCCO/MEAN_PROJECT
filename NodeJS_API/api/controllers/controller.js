@@ -1,17 +1,15 @@
-//'use strict';
+'use strict';
 
 var mongoose = require('mongoose'),
     Case = mongoose.model('Case');
 
 exports.get_cases = function(req, res)
 {
-  console.log("AAAAAAAAAAAAAAAAaa")
-  json_cases_informations = JSON.parse(req.params.cases_informations)
-  console.log("AAAAAAAAAAAAAAAAaa")
+  var json_cases_informations = JSON.parse(req.params.cases_informations);
   Case.find(json_cases_informations, function(err, cases) {
     if (err)
-      res.json(JSON.parse("{message: error}"));
+      res.send(err)
     res.statusCode = 200;
     res.json(cases);
-    });
+    }).limit(5);
 };
