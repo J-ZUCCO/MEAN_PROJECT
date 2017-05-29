@@ -2,14 +2,15 @@
 
 var mongoose = require('mongoose'),
     Case = mongoose.model('Case');
+var url = require('url');
 
 exports.get_cases = function(req, res)
 {
-  var json_cases_informations = JSON.parse(req.params.cases_informations);
-  Case.find(json_cases_informations, function(err, cases) {
+  //Use querystrings with url.parse(...)
+  Case.find(url.parse(req.url, true).query, function(err, cases) {
     if (err)
       res.send(err)
     res.statusCode = 200;
     res.json(cases);
-    }).limit(5);
+    })
 };
