@@ -1,11 +1,9 @@
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = require('mongodb').ObjectID;
 
 var CaseSchema = new Schema({
-  _id: {
-    type: String,
-  },
   compnos: {
     type: Number,
   },
