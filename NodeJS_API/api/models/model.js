@@ -78,12 +78,12 @@ var Case = mongoose.model('Case', CaseSchema)
 
 stream.on('data', function(err, doc){
   count++;
+  console.log('Document n°' + count + ' has been indexed')
 });
 stream.on('close', function(){
   console.log('indexed ' + count + ' documents!');
 });
 stream.on('error', function(err){
-  console.log(count);
   console.log(err);
 });
 
