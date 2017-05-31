@@ -6,7 +6,7 @@ module.exports = function(app) {
     .get(handler.get_cases)
 
 
-  app.route('/')
+  app.route('/test/:term')
     .get(handler.test)
 
   app.route('/cases/:case_id')

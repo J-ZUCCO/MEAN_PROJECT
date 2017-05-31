@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Case = mongoose.model('Case');
 var url = require('url');
 var ObjectId = require('mongodb').ObjectID;
+var http = require('http');
 
 function check_auth(method_level, user_level) {
   if (user_level >= method_level) {
@@ -15,7 +16,40 @@ function check_auth(method_level, user_level) {
 
 exports.test = function(req, res)
 {
-  res.send("mouaah")
+const body = {
+    "query": {
+      "query_string": {
+        "query" : req.params.term
+      }
+    }
+  };
+const options = {
+  hostname: 'localhost',
+  port: 9200,
+  path: '/cases/_search',
+  method: 'POST',
+};
+
+const request = http.request(options, (result) => {
+  console.log(`STATUS: ${result.statuscode}`);
+  console.log(`HEADERS: ${JSON.stringify(result.headers)}`);
+  result.setEncoding('utf8');
+  result.on('data', (chunk) => {
+    res.setHeader('content-type', 'application/json');
+    res.send(chunk);
+  });
+  result.on('end', () => {
+    console.log('No more data in response.');
+  });
+});
+req.on('error', (e) => {
+  console.error(`problem with request: ${e.message}`);
+});
+
+// write data to request body
+request.write(JSON.stringify(body));
+console.log("aaaaaaa")
+request.end();
 }
 
 exports.get_cases = function(req, res)
