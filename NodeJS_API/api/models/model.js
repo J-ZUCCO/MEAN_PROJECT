@@ -1,11 +1,11 @@
 'use strict';
 var mongoose = require('mongoose');
+var mongoosastic = require('mongoosastic');
 var Schema = mongoose.Schema;
-var ObjectId = require('mongodb').ObjectID;
 
 var CaseSchema = new Schema({
   compnos: {
-    type: Number,
+    type: String,
   },
   naturecode: {
     type: String
@@ -26,7 +26,7 @@ var CaseSchema = new Schema({
     type: String,
   },
   weapontype: {
-    type: Number,
+    type: String,
   },
   shooting: {
     type: String,
@@ -38,10 +38,10 @@ var CaseSchema = new Schema({
     type: String,
   },
   year: {
-    type: Number,
+    type: String,
   },
   month: {
-    type: Number,
+    type: String,
   },
   day_week: {
     type: String,
@@ -50,10 +50,10 @@ var CaseSchema = new Schema({
     type: String,
   },
   x: {
-    type: Number,
+    type: String,
   },
   y: {
-    type: Number,
+    type: String,
   },
   streetname: {
     type: String,
@@ -66,8 +66,25 @@ var CaseSchema = new Schema({
   }
 },
   {
-    collection: 'things'
+    collection: 'cases'
   }
 );
+
+CaseSchema.plugin(mongoosastic);
+
+var Case = mongoose.model('Case', CaseSchema)
+  , stream = Case.synchronize()
+  , count = 0;
+
+stream.on('data', function(err, doc){
+  count++;
+});
+stream.on('close', function(){
+  console.log('indexed ' + count + ' documents!');
+});
+stream.on('error', function(err){
+  console.log(count);
+  console.log(err);
+});
 
 module.exports = mongoose.model('Case', CaseSchema);
