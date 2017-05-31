@@ -1,0 +1,20 @@
+[
+  {
+  "username" : "ahuret",
+  "email" : "huret.antoine@meanmean.com",
+  "password" : "9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684",
+  "role" : 2
+  },
+  {
+  "username" : "mmeunier",
+  "email" : "meunier.michael@meanmean.com",
+  "password" : "9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684",
+  "role" : 2
+  },
+  {
+  "username" : "jzucco",
+  "email" : "jimmy.zucco@meanmean.com",
+  "password" : "9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684",
+  "role" : 2
+  }
+]
