@@ -6,6 +6,9 @@ module.exports = function(app) {
     .get(handler.get_cases)
 
 
+  app.route('/')
+    .get(handler.test)
+
   app.route('/cases/:case_id')
     .delete(handler.delete_case)
 };

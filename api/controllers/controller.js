@@ -13,6 +13,11 @@ function check_auth(method_level, user_level) {
   }
 }
 
+exports.test = function(req, res)
+{
+  res.send("mouaah")
+}
+
 exports.get_cases = function(req, res)
 {
   Case.find(url.parse(req.url, true).query, function(err, cases) {
