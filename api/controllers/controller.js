@@ -5,9 +5,18 @@ var mongoose = require('mongoose'),
 var url = require('url');
 var ObjectId = require('mongodb').ObjectID;
 
+function check_auth(method_level, user_level) {
+  if (user_level >= method_level) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 exports.get_cases = function(req, res)
 {
   Case.find(url.parse(req.url, true).query, function(err, cases) {
+    //if check_auth(0, role)
     if (err)
       res.send(err)
     cases[0].unIndex(function(err) {
@@ -22,6 +31,7 @@ exports.get_cases = function(req, res)
 exports.delete_case = function(req, res)
 {
   Case.find({_id: ObjectId(req.params.case_id)}, function(err, cases) {
+    //if check_auth(2, role)
     if (err)
       res.send(err)
     cases[0].unIndex(function(err) {

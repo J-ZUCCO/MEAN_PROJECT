@@ -70,6 +70,27 @@ var CaseSchema = new Schema({
   }
 );
 
+
+var UserSchema = new Schema({
+  username: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  password: {
+    type: String,
+  },
+  role: {
+    type: Number,
+  }
+},
+  {
+    collection: 'users'
+  }
+);
+
+
 CaseSchema.plugin(mongoosastic);
 
 var Case = mongoose.model('Case', CaseSchema)
@@ -78,7 +99,6 @@ var Case = mongoose.model('Case', CaseSchema)
 
 stream.on('data', function(err, doc){
   count++;
-  console.log('Document n°' + count + ' has been indexed')
 });
 stream.on('close', function(){
   console.log('indexed ' + count + ' documents!');
@@ -88,3 +108,4 @@ stream.on('error', function(err){
 });
 
 module.exports = mongoose.model('Case', CaseSchema);
+module.exports = mongoose.model('User', UserSchema);
