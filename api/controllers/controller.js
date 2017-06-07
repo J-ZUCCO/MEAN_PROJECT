@@ -111,7 +111,7 @@ exports.create_case = function(req, res)
   case.compnos =  req.body.compnos
   case.naturecode = req.body.naturecode
   case.incident_type_description = req.body.incident_type_description
-  case.[name] = value;.main_crimecode = req.body.main_crimecode
+  case.main_crimecode = req.body.main_crimecode
   case.reptdistrict = req.body.reptdistrict
   case.reportingarea = req.body.reportingarea
   case.fromdate = req.body.fromdate
