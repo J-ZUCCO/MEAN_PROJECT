@@ -91,42 +91,42 @@ exports.delete_case = function(req, res)
 
 exports.update_case = function(req, res)
 {
-  let query = {};
-  query[name] = value;
   Case.update({_id: ObjectId(req.params.case_id)}, {$set: {Case.reptdistrict: req.body.reptdistrict.name, Case.reportingarea: req.body.reportingarea.name, Case.fromdate: req.body.fromdate.name, Case.weapontype: req.body.weapontype.name, Case.shooting: req.body.shooting.name, Case.domestic: req.body.domestic.name, Case.shift: req.body.shift.name, Case.year: req.body.year.name, Case.month: req.body.month.name, Case.day_week: req.body.day_week.name, Case.ucrpart: req.body.ucrpart.name, Case.type: req.body.type.name, Case.typename: req.body.typename.name, Case.xstreetname: req.body.xstreetname.name, Case.location: req.body.location.name}, function(req, res) {
   //if check_auth(2, role)
-    if (err)
-      res.send(err)
-    cases[0].unIndex(function(err) {
-      console.log("Field updated");
+  contact.save(function(req){
+    if(!err) {
+                console.log("Case updated");
+            }
+            else {
+                console.log("Error: unable to update case");
+            }
     });
+  }
   res.send(item);
-};
+)};
 
 exports.create_case = function(req, res)
 {
-  let Case = new Shema();
-  Case.compnos =  req.body.compnos
-  Case.naturecode = req.body.naturecode
-  Case.incident_type_description = req.body.incident_type_description
-  Case
-  let query = {};
-  query[name] = value;.main_crimecode = req.body.main_crimecode
-  Case.reptdistrict = req.body.reptdistrict
-  Case.reportingarea = req.body.reportingarea
-  Case.fromdate = req.body.fromdate
-  Case.weapontype = req.body.weapontype
-  Case.shooting = req.body.shooting
-  Case.domestic = req.body.domestic
-  Case.shift = req.body.shift
-  Case.year = req.body.year
-  Case.month = req.body.month
-  Case.day_week = req.body.day_week
-  Case.ucrpart = req.body.ucrpart
-  Case.type = req.body.type
-  Case.typename = req.body.typename
-  Case.xstreetname = req.body.xstreetname
-  Case.location = req.body.location
+  let case = new Case();
+  case.compnos =  req.body.compnos
+  case.naturecode = req.body.naturecode
+  case.incident_type_description = req.body.incident_type_description
+  case.[name] = value;.main_crimecode = req.body.main_crimecode
+  case.reptdistrict = req.body.reptdistrict
+  case.reportingarea = req.body.reportingarea
+  case.fromdate = req.body.fromdate
+  case.weapontype = req.body.weapontype
+  case.shooting = req.body.shooting
+  case.domestic = req.body.domestic
+  case.shift = req.body.shift
+  case.year = req.body.year
+  case.month = req.body.month
+  case.day_week = req.body.day_week
+  case.ucrpart = req.body.ucrpart
+  case.type = req.body.type
+  case.typename = req.body.typename
+  case.xstreetname = req.body.xstreetname
+  case.location = req.body.location
 },
     Case.put(function(err, cases) {0
     }

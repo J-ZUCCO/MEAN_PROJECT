@@ -17,8 +17,8 @@ module.exports = function(app) {
 	.delete(handler.delete_case)
     
     app.route('/cases/:case_id')
-	.get(handler.update_case)
+	.put(handler.update_case)
 
     app.route('/cases/:term')
-	.put(handler.create_case)
+	.post(handler.create_case)
 };
